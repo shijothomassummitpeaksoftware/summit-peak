@@ -1,0 +1,127 @@
+/* Custom font file */
+@import './satoshi-fonts.css';
+
+
+html,
+body {
+  width: 100%;
+  /* Ensure no unnecessary horizontal scrolling */
+  max-width: 100%;
+  /* Avoid content extending outside */
+  overflow-x: hidden;
+  /* Prevent horizontal scrolling */
+  scroll-behavior: smooth;
+
+  font-family: 'Satoshi-Regular', sans-serif;
+}
+
+
+/* styles.css */
+.container-custom {
+  width: 100%;
+  /* Full width on small screens */
+  max-width: 1510px !important;
+  /* Max width for large screens */
+  margin: 0 auto !important;
+  padding-left: 1rem;
+  /* Default padding for small screens */
+  padding-right: 1rem;
+  /* Default padding for small screens */
+}
+
+/* For small screens and up (works for mobile, tablets, and larger devices) */
+@media (min-width: 640px) {
+  .container-custom {
+    padding-left: 2rem;
+    /* Adjust padding for small screens */
+    padding-right: 2rem;
+    /* Adjust padding for small screens */
+  }
+}
+
+/* For medium screens (768px and above) */
+@media (min-width: 768px) {
+  .container-custom {
+    padding-left: 3rem;
+    /* Adjust padding for medium screens */
+    padding-right: 3rem;
+    /* Adjust padding for medium screens */
+  }
+}
+
+/* For large screens (1024px and above) */
+@media (min-width: 1024px) {
+  .container-custom {
+    padding-left: 4rem;
+    /* Adjust padding for large screens */
+    padding-right: 4rem;
+    /* Adjust padding for large screens */
+  }
+}
+
+/* For extra-large screens (1280px and above) */
+@media (min-width: 1280px) {
+  .container-custom {
+    padding-left: 6rem;
+    /* Adjust padding for extra-large screens */
+    padding-right: 6rem;
+    /* Adjust padding for extra-large screens */
+  }
+}
+
+
+.testimonial-slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.testimonial-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonial-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
+@media (min-width: 768px) {
+  .testimonial-slide {
+    flex: 0 0 90%;
+    margin-right: 2%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .testimonial-slide {
+    flex: 0 0 40%;
+    margin-right: 2%;
+  }
+}
+
+.testimonial-box {
+  min-height: 450px;
+  /* Set max height for the boxes */
+  overflow-y: auto;
+  /* Add scroll for overflowing content */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* Ensure alignment of elements */
+  padding: 1.5rem;
+  /* Adjust padding */
+}
+
+.testimonial-box img {
+  max-width: 100%;
+  height: auto;
+}
+
+.testimonial-box p {
+  flex-grow: 1;
+  /* Allow the paragraph to take up available space */
+  margin-bottom: 1rem;
+}
