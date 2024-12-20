@@ -7,10 +7,10 @@
 function insertCopyright() {
   // Get the current year dynamically
   const currentYear = new Date().getFullYear();
-  
+
   // Create the paragraph element
   const copyrightParagraph = document.createElement('p');
-  
+
   // Set the inner text with the current year
   copyrightParagraph.innerText = `Copyright © ${currentYear}. SummitPeak. All rights reserved.`;
 
@@ -25,7 +25,7 @@ function insertCopyright() {
   }
 }
 
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function () {
   console.log("DOM content loaded, inserting copyright...");
   insertCopyright();  // Call the function to insert copyright
 });
@@ -60,7 +60,7 @@ function initMobileMenu() {
 }
 
 // Wait for DOM content to be loaded before attaching event listeners
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function () {
   console.log('DOM content loaded, initializing mobile menu...');
   initMobileMenu();
 });
@@ -71,52 +71,92 @@ window.addEventListener('DOMContentLoaded', function() {
 //  * ================================
 
 const projects = {
-  peakdrive: {
-    name: "PeakDrive",
-    description: "A revolutionary cloud storage solution that optimizes file management and collaboration for businesses of all sizes. Features advanced security protocols and seamless integration capabilities.",
-    desktopImage: "https://via.placeholder.com/600x400?text=PeakDrive+Desktop",
+  education: {
+    name: "Education",
+    description: "Empower Educators and Learners with Innovative eLearning Solutions. Unlock personalized learning experiences and streamlined operations for your institution. At SummitPeak, our expert team helps develop customized eLearning applications, integrating cutting-edge technology and pedagogical expertise to create engaging, effective, and easy-to-use solutions.",
+    desktopImage: "https://via.placeholder.com/600x400?text=Education+Desktop",
   },
-  smarthealthconnect: {
-    name: "SmartHealth Connect",
-    description: "SmartHealth Connect is a cutting-edge digital platform that unifies patient records, telemedicine services, and healthcare providers into one seamless ecosystem. It enables real-time communication, improved patient care, and streamlined administrative processes, making healthcare more accessible and efficient.",
-    desktopImage: "https://via.placeholder.com/600x400?text=SmartHealth+Connect+Desktop",
+  healthCare: {
+    name: "Health Care",
+    description: "Experience the Future of Healthcare with Our Innovative Solutions. Elevate patient care, simplify administrative tasks, and transform your healthcare organization into a model of efficiency and excellence.",
+    desktopImage: "https://via.placeholder.com/600x400?text=Health+Care+Desktop",
   },
-  edupulse: {
-    name: "EduPulse",
-    description: "An innovative education management platform that connects students, teachers, and administrators. Featuring real-time analytics and personalized learning paths.",
-    desktopImage: "https://via.placeholder.com/600x400?text=EduPulse+Desktop",
+  bfsi: {
+    name: "BFSI",
+    description: "Future-Proof Your Banking Institution with Advanced Solutions. Provide customers with seamless, secure transactions and empower your teams to drive growth, innovation, and excellence in the ever-changing world of finance.",
+    desktopImage: "https://via.placeholder.com/600x400?text=BFSI+Desktop",
   },
-  retailsync: {
-    name: "RetailSync",
-    description: "A comprehensive retail management solution that synchronizes inventory, sales, and customer data across multiple channels in real-time.",
-    desktopImage: "https://via.placeholder.com/600x400?text=RetailSync+Desktop",
+  hosting: {
+    name: "Hosting",
+    description: "Let Us Handle Hosting, So You Can Focus on Growth. Our team of experts takes care of your hosting requirements, freeing you to focus on your core business.",
+    desktopImage: "https://via.placeholder.com/600x400?text=Hosting+Desktop",
   },
-  finguard: {
-    name: "FinGuard",
-    description: "Advanced financial security platform providing real-time fraud detection and prevention for financial institutions and their customers.",
-    desktopImage: "https://via.placeholder.com/600x400?text=FinGuard+Desktop",
+  media: {
+    name: "Media",
+    description: "Transform the Entertainment Landscape with Innovative Solutions. We design and develop media and entertainment applications that exceed customer expectations and set you apart from the competition",
+    desktopImage: "https://via.placeholder.com/600x400?text=Media+Desktop",
+  },
+  startUp: {
+    name: "StartUp",
+    description: "Achieve App Excellence through Agile Development and Market Focus. Our teams prioritize continuous delivery of value, ensuring your app stays relevant, meets user needs, and drives business results.",
+    desktopImage: "https://via.placeholder.com/600x400?text=StartUp+Desktop",
+  },
+  ecommerce: {
+    name: "E-commerce",
+    description: "Create Digital Shopping Experiences that Drive Business Success. Our solutions enable you to optimize operations, develop revenue-boosting strategies, and provide your customers with unparalleled service.",
+    desktopImage: "https://via.placeholder.com/600x400?text=E-commerce+Desktop",
   }
 };
 
+// Elements
 const projectButtons = document.querySelectorAll('.project-btn');
 const projectTitle = document.getElementById('project-title');
 const projectDescription = document.getElementById('project-description');
 const desktopImage = document.getElementById('desktop-image');
 
+// Update project content
+const updateProjectDetails = (projectId) => {
+  console.log('projectID', projectId)
+  const project = projects[projectId];
+  if (project) {
+    // Update active button styling
+    projectButtons.forEach(btn => btn.classList.remove('active', 'bg-teal-50', 'text-teal-600', 'font-medium'));
+    document.querySelector(`[data-project="${projectId}"]`).classList.add('active', 'bg-teal-50', 'text-teal-600', 'font-medium');
+
+    // Update text content
+    projectTitle.textContent = project.name;
+    projectDescription.textContent = project.description;
+
+    // Update image src and alt
+    desktopImage.setAttribute('src', project.desktopImage);
+    desktopImage.setAttribute('alt', `${project.name} desktop view`);
+    console.log(`Image src updated to: ${project.desktopImage}`);
+
+  } else {
+    console.error(`Project ID "${projectId}" not found.`);
+  }
+};
+
+// Event listeners
 projectButtons.forEach(button => {
   button.addEventListener('click', () => {
     const projectId = button.getAttribute('data-project');
-    const project = projects[projectId];
-
-    projectButtons.forEach(btn => btn.classList.remove('active', 'bg-teal-50', 'text-teal-600', 'font-medium'));
-    button.classList.add('active', 'bg-teal-50', 'text-teal-600', 'font-medium');
-
-    projectTitle.textContent = project.name;
-    projectDescription.textContent = project.description;
-    desktopImage.src = project.desktopImage;
-    desktopImage.alt = `${project.name} desktop view`;
+    updateProjectDetails(projectId);
   });
 });
+
+// Initialize with default project
+document.addEventListener('DOMContentLoaded', () => {
+  updateProjectDetails('education');
+});
+
+
+
+// * ================================
+//  * HOME PAGE SECTION SEVEN & SERVICES PAGE SECTION FOUR
+//  * ================================
+
+
 
 const slider = document.getElementById('testimonialSlider');
 const slides = document.querySelectorAll('.testimonial-slide');
@@ -171,4 +211,4 @@ function handleSwipe() {
 }
 
 // Optional: Auto-advance slides every 7 seconds
-setInterval(nextSlide, 7000);
+// setInterval(nextSlide, 7000);
