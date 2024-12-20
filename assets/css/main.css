@@ -15,6 +15,27 @@ body {
   font-family: 'Satoshi-Regular', sans-serif;
 }
 
+/* For WebKit browsers (Chrome, Edge, Safari) */
+nav::-webkit-scrollbar {
+  width: 8px; /* Adjust scrollbar width */
+}
+
+nav::-webkit-scrollbar-thumb {
+  background-color: #ccc; /* Thumb color */
+  border-radius: 4px; /* Rounded corners */
+  border: none; /* Remove border */
+}
+
+nav::-webkit-scrollbar-track {
+  background-color: transparent; /* Background of the scrollbar */
+  border: none; /* Remove border from the track */
+}
+
+/* For Firefox */
+nav {
+  scrollbar-width: thin; /* Thin scrollbar */
+  scrollbar-color: #ccc transparent; /* Thumb and track colors */
+}
 
 /* styles.css */
 .container-custom {
