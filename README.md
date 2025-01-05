@@ -26,7 +26,7 @@ This is the official static website for **SummitPeakSoftware Pvt Ltd**, designed
 ## Developer Information
 - **Name**: Shijo Thomas
 - **Role**: Full Stack Developer
-- **Company**: SummitPeakSoftware Pvt Ltd
+- **Company**: SummitPeakSoftware Pvt Ltd.
 
 ## Contact
 For more information, please contact us at **7034436073**.
